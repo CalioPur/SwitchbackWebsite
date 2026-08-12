@@ -280,12 +280,8 @@ body{
 .item_type.has-overflow > .items{
     -webkit-mask-image: -webkit-linear-gradient(to left, transparent 0%, black 30px, black calc(100% - 30px), transparent 100%);
     mask-image: linear-gradient(to right, transparent 0%, black 30px, black calc(100% - 30px), transparent 100%);
-    margin-left: 140px;
-}
 
-.type_categories {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
+
 }
 
 /* Flèches de navigation */
@@ -319,16 +315,16 @@ body{
     cursor: default;
 }
 
-.type_categories {
-    flex: 0 0 auto;       /* empêche les cards de se compresser */
-    scroll-snap-align: start;
-}
+
 
 .type_categories {
     display: flex;
+    flex: 0 0 auto;       /* empêche les cards de se compresser */
+    scroll-snap-align: start;
     flex-direction: column;
     align-items: center;
-    margin: 0 30px 10px 30px;
+
+    margin: 0 60px 10px 0;
 
     font-size: 16px;
     color: #555;
