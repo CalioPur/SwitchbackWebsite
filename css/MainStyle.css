@@ -238,7 +238,7 @@ header h1 {
 /* body */
 
 body{
-    background-color: #fcfcfc;
+    background-color: #f3f3f3;
     margin: 0;
     font-family: Bahnschrift, sans-serif;
 
@@ -257,16 +257,73 @@ body{
 .item_type{
     align-items: center;
     margin-left: 40px;
+    position: relative; /* pour positionner les flèches */
 }
 
-.item_type > h1{
-    font-size: 36px;
-    font-weight: bold;
-}
 .item_type > .items{
     display: flex;
     margin-left: 120px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
 }
+
+.item_type > .items::-webkit-scrollbar {
+    display: none;
+}
+
+/* Le fade ne s'applique QUE si le contenu déborde */
+.item_type.has-overflow > .items{
+    -webkit-mask-image: -webkit-linear-gradient(to left, transparent 0%, black 30px, black calc(100% - 30px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 30px, black calc(100% - 30px), transparent 100%);
+    margin-left: 140px;
+}
+
+.type_categories {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+
+/* Flèches de navigation */
+.scroll-btn {
+    display: none; /* cachées par défaut, réactivées si overflow */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+}
+
+.item_type.has-overflow .scroll-btn {
+    display: flex;
+}
+
+.scroll-btn.left { left: 70px; }
+.scroll-btn.right { right: 10px; }
+
+.scroll-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.type_categories {
+    flex: 0 0 auto;       /* empêche les cards de se compresser */
+    scroll-snap-align: start;
+}
+
 .type_categories {
     display: flex;
     flex-direction: column;
@@ -280,4 +337,28 @@ body{
     width: 250px;
     height: 250px;
     margin-bottom: 15px;
+}
+
+/*Footer*/
+footer{
+    background-color: #fff;
+}
+.social-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.social_img{
+    width: 30px;
+    height: 30px;
+    margin: 40px 10px 0 10px;
+}
+.mentions{
+    display: flex;
+    color: #717171;
+    justify-content: center;
+    padding: 20px 0;
 }
