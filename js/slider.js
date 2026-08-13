@@ -54,10 +54,10 @@ window.addEventListener('load', () => {
 
         // Le navigateur peut choisir un point de repos initial en se basant sur la
         // mise en page d'avant l'ajout du padding du mask ci-dessus. On force la
-        // position exacte de la 1ère carte pour partir sur une base fiable.
+        // position 0 (début réel, buffer du fondu inclus) pour partir sur une base
+        // fiable, sans coller la 1ère carte au bord (ce qui annulerait le buffer).
         if (section.classList.contains('has-overflow')) {
-            const first = getCardPositions()[0];
-            if (first) items.scrollTo({ left: first.position, behavior: 'auto' });
+            items.scrollTo({ left: -30, behavior: 'auto' });
         }
     });
 });

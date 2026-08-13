@@ -245,16 +245,23 @@ body{
 }
 
 .video_container{
-    width: 100%;
-    height: 850px;
-    background-color: #333;
+    width: auto;
+    background-color: #000;
     text-align: center;
     color: white;
 }
 
+.eyecatchVideo{
+    width: 100%;          /* Ou une largeur fixe en px */
+    height: 900px;        /* Votre hauteur cible */
+    object-fit: cover;    /* Rogne l'image sans la déformer */
+    object-position: center; /* Centre le rognage (options: top, bottom, etc.) */
+}
 /*Items in store*/
 
+
 .item_type{
+    padding-top: 30px;
     align-items: center;
     margin-left: 40px;
     position: relative; /* pour positionner les flèches */
@@ -262,7 +269,8 @@ body{
 
 .item_type > .items{
     display: flex;
-    margin-left: 120px;
+    margin-left: 90px;
+    padding-left: 30px;
 
     overflow-x: auto;
     overflow-y: hidden;
@@ -278,8 +286,8 @@ body{
 
 /* Le fade ne s'applique QUE si le contenu déborde */
 .item_type.has-overflow > .items{
-    -webkit-mask-image: -webkit-linear-gradient(to left, transparent 0%, black 30px, black calc(100% - 30px), transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 30px, black calc(100% - 30px), transparent 100%);
+    margin-left: 120px;
+    mask-image: linear-gradient(to right, transparent 0%, black calc(0% + 30px), black calc(100% - 30px), transparent 100%);
 
 
 }
